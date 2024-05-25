@@ -1,9 +1,9 @@
-FROM python:3.8
-
-COPY ./* /
-
+FROM python:3.10.11
+# Copy Files
+WORKDIR /usr/src/app
+COPY . .
+# Install
 RUN pip install -r requirements.txt
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "app.py" ]
+# Docker Run Command
+EXPOSE 5000
+CMD [ "python", "-m" , "flask", "run", "--host=0.0.0.0"]
